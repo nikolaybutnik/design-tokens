@@ -1,6 +1,7 @@
 import { customTokenNode } from '@typings/tokenNodeTypes'
 import extractTokenNodeValues from './extractTokenNodeValues'
 import isTokenNode from './isTokenNode'
+import { extractComponents } from '@src/extractor/componentExtractor'
 
 // the name that token frames have
 const tokenFrameName = '_tokens'
@@ -33,6 +34,7 @@ const getVariantName = (parentName: string, childName: string): string => {
  * @param pages PageNodes
  */
 const getTokenNodes = (pages: PageNode[]): customTokenNode[] => {
+  extractComponents(pages)
   // get token frames
   const tokenFrames = getFrameNodes(pages)
   // get all children of token frames
